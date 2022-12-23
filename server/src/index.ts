@@ -9,10 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('<h1>Bienvenue sur City Simon</h1>')
+    res.send('<h1>Bienvenue sur City </h1>')
 });
 
-const port = process.env.PORT ||8000;
+const port = process.env.PORT ||4000;
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
