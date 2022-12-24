@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('<h1>Bienvenue sur City </h1>')
+    res.send('<h1>Bienvenue sur Mapado </h1>')
 });
 
 const port = process.env.PORT ||4000;
