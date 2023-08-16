@@ -1,0 +1,22 @@
+query getCity($query: String!) {
+  city(name: $query) {
+    id
+    name
+    latitude
+    longitude
+    photo
+    poi {
+      id
+      name
+      address
+      latitude
+      longitude
+      description
+      rating
+      photo
+      category {
+        name
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.mapLoader {
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-container {
+height: calc(100vh - 8rem);
+}
+
+.leaflet-top {
+    bottom: 32px !important;
+}

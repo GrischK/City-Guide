@@ -1,0 +1,11 @@
+query GetProfile {
+  profile {
+    id
+    email
+    role
+    cities {
+      name
+      id
+    }
+  }
+}

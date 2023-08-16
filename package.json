@@ -1,18 +1,30 @@
 {
-  "name": "city-guide",
+  "name": "mapado",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "concurrently -n client, -c green,yellow -t \"HH:cocktail_tropical:ss\" -p \"{name} {time}\" \"npm --prefix ./client run dev\" \"npm --prefix ./server run dev\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-client": "npm --prefix ./client run dev",
-    "dev-server": "npm --prefix ./server run dev"
+    "integration-tests": "docker compose -f docker-compose.integration-tests.yml up --build --exit-code-from testrunner",
+    "integration-tests:backend-only": "docker compose -f docker-compose.integration-tests.yml up testDB backend",
+    "e2e-tests": "docker compose -f docker-compose.e2e-tests.yml up --build --exit-code-from testrunner",
+    "start": "WATCHPACK_POLLING=true docker compose -f docker-compose.yml up --build",
+    "start:prod": "docker compose -f docker-compose.staging.yml pull && docker compose -f docker-compose.production.yml up",
+    "start:staging": "docker compose -f docker-compose.staging.yml pull && docker compose -f docker-compose.staging.yml up",
+    "publish:server": "cd server && docker build -f Dockerfile.production . -t scrip/wns-livecodings-server && docker push scrip/wns-livecodings-server && cd ..",
+    "publish:client": "cd client && docker build -f Dockerfile.production -t scrip/wns-livecodings-client . && docker push scrip/wns-livecodings-client && cd ..",
+    "publish-staging:server": "cd server && docker build -f Dockerfile.production . -t scrip/wns-livecodings-server:staging && docker push scrip/wns-livecodings-server:staging && cd ..",
+    "publish-staging:client": "cd client && docker build -f Dockerfile.production -t scrip/wns-livecodings-client:staging . && docker push scrip/wns-livecodings-client:staging && cd .."
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WildCodeSchool/2209-wns-adleman-mapado"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "framer-motion": "^10.12.16",
+    "react-hot-toast": "^2.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2"
   }
 }
